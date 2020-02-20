@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfect.mall.mallsys.mapper.VerifycodeMapper">
+
+    <insert id="add" parameterType="com.perfect.mall.mallsys.entity.Verifycode">
+        insert into verifycode(code_type, code_number, expire_time, create_time, receiver)
+        values(#{codeType}, #{codeNumber}, #{expireTime}, #{createTime}, #{receiver})
+    </insert>
+
+    <delete id="delete">
+        delete from verifycode where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.perfect.mall.mallsys.entity.Verifycode">
+        update verifycode
+        <set>
+            <if test="codeType != null">
+                code_type = #{codeType},
+            </if>
+            <if test="codeNumber != null">
+                code_number = #{codeNumber},
+            </if>
+            <if test="expireTime != null">
+                expire_time = #{expireTime},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="receiver != null">
+                receiver = #{receiver},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="queryById" resultType="com.perfect.mall.mallsys.entity.Verifycode">
+        select * from verifycode where id = #{id}
+    </select>
+
+    <select id="listByCodeTypeAndReceiver" resultType="com.perfect.mall.mallsys.entity.Verifycode">
+        select * from verifycode where code_type = #{codeType} and receiver = #{receiver} order by create_time desc
+    </select>
+
+    <select id="pgByReceiver" resultType="java.util.HashMap">
+        select id, receiver, create_time from verifycode where receiver = #{receiver}
+    </select>
+</mapper>

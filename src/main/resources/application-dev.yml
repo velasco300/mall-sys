@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: ${db.driver.class.name}
+    url: jdbc:mysql://${db.host}:${db.port}/aaa?characterEncoding=utf8&useSSL=false
+    username: ${db.username}
+    password: ${db.password}
+
+
+
+
+
+
+

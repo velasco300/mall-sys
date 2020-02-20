@@ -1,0 +1,40 @@
+server:
+  port: 6002
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: mall_app_tx_group
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+  mapperLocations: classpath:mappers/*.xml
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+ribbon:
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  OkToRetryOnAllOperations: false
+
+#pagehelper插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params=count: countSql
+#代码生成器配置
+#生成代码的项目根路径
+auto-code:
+  parentPath: /Users/wwh/workspace/myspace/mall-sys
+  parentPack: com.perfect.mall.mallsys
+
+
+
+

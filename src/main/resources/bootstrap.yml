@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mall-sys
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8818
+        shared-dataids: mall.properties
+        refreshable-dataids: mall.properties
+      discovery:
+        server-addr: 127.0.0.1:8818
+logging:
+  path: logs
+  file: app.log
